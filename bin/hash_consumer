@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+require 'hash_consumer'
+
+test_hash = {:name => "Michael", :age => 32, :nested => {"1" => {:x => "a"}, "2" => {:y => true} }, "pi" => 3.14 }
+HashConsumer.new test_hash
