@@ -46,7 +46,7 @@ class HashConsumer
 
   private
     def safe_key(key)
-      result = key.to_s.underscore
+      result = key.to_s.underscore.gsub(/[^A-z0-9]/, '_')
       result.prepend('_') if result =~ /^\d/
       result
     end
