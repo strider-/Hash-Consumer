@@ -1,4 +1,6 @@
 require "hash_consumer/version"
+require "active_support/inflector"
+require "extensions"
 
 class HashConsumer
   attr_reader :dynamic_methods

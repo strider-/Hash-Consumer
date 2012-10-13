@@ -12,7 +12,7 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Consumes a Ruby hash and returns a object that has the hash keys as methods.
                       Example: test = {:name => "Mike"}.consume # test.name returns "Mike"}
   gem.homepage      = ""
-
+  gem.add_dependency  "activesupport"
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
   gem.test_files    = gem.files.grep(%r{^(test|spec|features)/})

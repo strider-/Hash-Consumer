@@ -1,6 +1,7 @@
 # HashConsumer
 
 Consumes a Ruby hash and returns a object that has the hash keys as methods.  Works recursively and with arrays.
+Has a dependency on rails/active_support.
 
 Example:
 
