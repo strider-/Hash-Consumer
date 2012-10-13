@@ -6,16 +6,18 @@ require "extensions"
 class HashConsumer
   attr_reader :dynamic_methods
   @@whine = false
+  @base_hash = nil
 
   def initialize(hash)
     raise ArgumentError "Only hashes are supported." unless hash.is_a? Hash
 
     @dynamic_methods = hash.keys.map { |k| safe_key(k).to_sym }
-    hash.each do |k,v|
+    @base_hash = hash
+
+    @base_hash.each do |k,v|
       method_name = safe_key(k)
       define_singleton_method method_name, lambda { resolve_value(v) }
     end
-    define_singleton_method :to_json, lambda { ActiveSupport::JSON.encode hash }
   end
 
   def self.whine_on_missing_methods
@@ -27,7 +29,15 @@ class HashConsumer
   end  
 
   def to_s
-    "Consumed Hash #{dynamic_methods}"
+    @base_hash.to_s
+  end
+
+  def to_json(options = {})
+    @base_hash.to_json options
+  end
+
+  def as_json(options = {})
+    @base_hash.as_json options
   end
 
   def method_missing(name, *args)
