@@ -28,6 +28,10 @@ class HashConsumer
     @@whine = bool
   end  
 
+  def [](index)
+    @base_hash[index]
+  end
+
   def to_s
     @base_hash.to_s
   end

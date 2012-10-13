@@ -4,6 +4,6 @@ require 'hash_consumer'
 hash = {:name => "Michael", :age => 32, :nested => {"1" => {:x => "a"}, "2" => {:y => true} }, "pi" => 3.14 }
 consumed = hash.consume
 
-puts "hash:    #{hash}"
 puts "consume: #{consumed}"
-puts "to_json: #{consumed.to_json}"
+puts "method:  Name = #{consumed.name}"
+puts "indexer: Age = #{consumed[:age]}"
