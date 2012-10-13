@@ -5,7 +5,14 @@ Has a dependency on rails/active_support.
 
 Example:
 
-    consumed_hash = {:name => "Some Guy", :nested => { :bool => true, "string_key" => "yup"}, "123" => "numbers get underscore prefixed" }.consume
+    consumed_hash = {
+                       :name => "Some Guy", 
+                       :nested => { 
+                         :bool => true, 
+                         "string_key" => "yup"
+                       }, 
+                       "123" => "numbers get underscore prefixed" 
+                    }.consume
 
     consumed_hash.name        # Some Guy
     consumed_hash.nested.bool # true
