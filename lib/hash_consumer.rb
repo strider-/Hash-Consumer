@@ -1,4 +1,5 @@
 require "hash_consumer/version"
+require "active_support"
 require "active_support/inflector"
 require "extensions"
 
@@ -14,6 +15,7 @@ class HashConsumer
       method_name = safe_key(k)
       define_singleton_method method_name, lambda { resolve_value(v) }
     end
+    define_singleton_method :to_json, lambda { ActiveSupport::JSON.encode hash }
   end
 
   def self.whine_on_missing_methods
