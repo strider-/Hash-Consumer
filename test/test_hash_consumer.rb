@@ -6,8 +6,10 @@ class HashConsumerTest < Test::Unit::TestCase
                 'nested' => { '123_number_key' => 'string_value', 'i!!3g@l_n4m!ng' => true } }      
   
   def test_consumation
-    consumed = @@test_hash.consume
-    assert_not_nil consumed
+    assert_nothing_raised do
+      consumed = @@test_hash.consume
+      assert_not_nil consumed
+    end    
   end
 
   def test_method_creation
